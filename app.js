@@ -1,17 +1,23 @@
 const http = require('http');
 
-// Crear el servidor
 const server = http.createServer((req, res) => {
-  // Configurar cabeceras de la respuesta
-  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
 
-  // Enviar respuesta y cerrar conexión
-  res.end('¡Hola Mundo!');
+   res.end(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>GIF funcionando</title>
+      </head>
+      <body style="text-align:center; font-family:sans-serif;">
+        <h1>Hola Mundo 😎</h1>
+        <p>Ahora sí debería verse animado 👇</p>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTY4NXFxbTNlaWpuNW95OWM1a3dzam80eThwYzZrc2swcGo5OG5vYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AT6LbRAazEoPm/giphy.gif" alt="GIF animado">
+      </body>
+    </html>
+  `);
 });
 
-// Poner el servidor en escucha
-const PORT = 3000;
-
-server.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+server.listen(3000, () => {
+  console.log('Servidor en http://localhost:3000');
 });
